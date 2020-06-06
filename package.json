@@ -1,0 +1,8 @@
+{
+  "name": "b3",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:milesibastos/b3.git",
+  "author": "Antonio Milesi Bastos <antonio@milesibastos.com>",
+  "license": "MIT"
+}
