@@ -6,7 +6,7 @@
   "author": "Antonio Milesi Bastos <antonio@milesibastos.com>",
   "license": "MIT",
   "scripts": {
-    "now-build": "curl http://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A${VERCEL_GITHUB_COMMIT_REF}.ZIP --output COTAHIST_A${VERCEL_GITHUB_COMMIT_REF}.ZIP --silent"
+    "now-build": "curl http://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A${YEAR}.ZIP --output COTAHIST_A${YEAR}.ZIP --silent"
   },
   "dependencies": {
     "axios": "^0.19.2",
