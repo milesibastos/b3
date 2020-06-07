@@ -1,27 +1,13 @@
-const fs = require("fs");
-const path = require("path");
-const { spawn } = require("child_process");
-const unzip = require("unzip-stream");
 const { format } = require("date-fns");
+const datasource = require("../../_datasource");
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
   const { ticker, date } = req.query;
   const dt = format(new Date(date), "yyyyMMdd");
-  const file = path.resolve("COTAHIST_A2020.ZIP");
-
-  const grep = spawn("grep", ["-E", `${dt}[0-9]{2}${ticker}[[:space:]]+`]);
-
-  res.writeHead(200, {
-    "Content-Type": "text/event-stream",
-    "Cache-control": "no-cache",
-  });
-
-  grep.stdout.pipe(res);
-
-  fs.createReadStream(file)
-    .pipe(unzip.Parse())
-    .on("entry", function (entry) {
-      entry.on("data", (data) => grep.stdin.write(data));
-      entry.on("end", () => grep.stdin.end());
-    });
+  const dataset = await datasource();
+  const response = dataset.filter(
+    (row) => row.slice(12, 12 + 12).trim() == ticker && row.slice(2, 10) === dt
+  );
+  console.log(dataset[dataset.length - 1]);
+  res.json(response);
 };
