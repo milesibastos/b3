@@ -1,5 +1,30 @@
 # Market Data | B3
 
+- [Market Data \| B3](http://www.b3.com.br/en_us/market-data-and-indices/data-services/market-data/)
+- [FILE LAYOUT – HISTORICAL QUOTATIONS](http://www.b3.com.br/data/files/65/50/AD/26/29C8B51095EE46B5790D8AA8/HistoricalQuotations_B3.pdf)
+
+## Historical Quotations
+
+- YEAR: 2020
+  - https://b3-2020.now.sh
+  - http://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2020.ZIP
+- YEAR: 2019
+  - https://b3-2019.now.sh
+  - http://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2019.ZIP
+- YEAR: 2018
+  - https://b3-2018.now.sh
+  - http://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2018.ZIP
+
+## The purpose of this API is to return a result as:
+
+```bash
+$ wget -nc -O - http://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2020.ZIP | gunzip - | gzip - > COTAHIST_A2020.gz
+$ zgrep -E [0-9]+PETR4[[:space:]]+ COTAHIST_A2020.gz
+012020010202PETR4       010PETROBRAS   PN  EJ  N2   R$  000000000305100000000030700000000003031000000000305700000000030700000000003069000000000307064405000000000037774500000000115477749300000000000000009999123100000010000000000000BRPETRACNPR6196
+...
+012020060502PETR4       010PETROBRAS   PN      N2   R$  000000000222900000000023030000000002206000000000223200000000022100000000002210000000000221327382000000000114137700000000254771647800000000000000009999123100000010000000000000BRPETRACNPR6196
+```
+
 ## GET: `/api/ticker/:ticker`
 
 ```bash
