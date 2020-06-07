@@ -5,6 +5,9 @@
   "repository": "git@github.com:milesibastos/b3.git",
   "author": "Antonio Milesi Bastos <antonio@milesibastos.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "curl http://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A2020.ZIP --output COTAHIST_A2020.ZIP"
+  },
   "dependencies": {
     "axios": "^0.19.2",
     "date-fns": "^2.14.0",
