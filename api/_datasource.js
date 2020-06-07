@@ -10,7 +10,7 @@ module.exports = () =>
     if (dataset.length > 0) {
       resolve(dataset);
     } else {
-      const file = path.resolve("COTAHIST_A2020.ZIP");
+      const file = path.resolve(`COTAHIST_A${process.env.VERCEL_GITHUB_COMMIT_REF}.ZIP`);
 
       fs.createReadStream(file)
         .pipe(unzip.Parse())
