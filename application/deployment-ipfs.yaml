@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ipfs
+  namespace: b3
+spec:
+  selector:
+    matchLabels:
+      k8s-app: ipfs
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        k8s-app: ipfs
+    spec:
+      containers:
+      - image: milesibastos.azurecr.io/ipfs:latest
+        name: ipfs
+        volumeMounts:
+        - name: ipfs-persistent-storage
+          mountPath: /data/ipfs
+      volumes:
+      - name: ipfs-persistent-storage
+        persistentVolumeClaim:
+          claimName: ipfs-data-disk
+

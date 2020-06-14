@@ -45,7 +45,7 @@ $ curl https://b3-2020.now.sh/api/ticker/PETR4/2020-06-01
 ]
 ```
 
-## Mapping values sample
+## Mapping text to object sample
 
 How to mapping text to object is beyond the scope of this project. But here's an example doing it based on [file layout](http://www.b3.com.br/data/files/65/50/AD/26/29C8B51095EE46B5790D8AA8/HistoricalQuotations_B3.pdf)
 

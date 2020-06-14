@@ -1,0 +1,19 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: b3-2020-cronjob
+spec:
+  schedule: "0 0 * * 2-6"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: b3-2020-cronjob
+            image: curlimages/curl
+            args:
+            - -X
+            - POST
+            - https://api.zeit.co/v1/integrations/deploy/Qmeae6mv4Ut6HN966EGS45ZwmC3A16RjkRdJFecRBHauDK/W1Gi54Ws8d
+          restartPolicy: OnFailure
+
