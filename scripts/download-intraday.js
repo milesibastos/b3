@@ -1,9 +1,8 @@
 const axios = require("axios");
 const FormData = require("form-data");
+const { format } = require("date-fns");
 
-const downloadUrl =
-  "https://arquivos.b3.com.br/apinegocios/tickercsv/2020-06-12";
-const uploadUrl = "http://ipfs.b3:5001/api/v0/add";
+const api = "http://ipfs-api.b3:5001/api/v0";
 
 axios.interceptors.request.use(
   function (config) {
@@ -31,6 +30,10 @@ axios.interceptors.response.use(
 );
 
 async function main() {
+  const today = format(new Date(), "yyyy-MM-dd");
+
+  const downloadUrl = `https://arquivos.b3.com.br/apinegocios/tickercsv/${today}`;
+
   const downStream = await axios({
     method: "GET",
     responseType: "stream",
@@ -44,7 +47,7 @@ async function main() {
 
   const upStream = await axios({
     method: "post",
-    url: uploadUrl,
+    url: `${api}/add`,
     headers: headers,
     data: formData,
     maxContentLength: 1000000000,
@@ -55,7 +58,7 @@ async function main() {
 
   await axios({
     method: "post",
-    url: `http://ipfs.b3:5001/api/v0/files/cp?arg=%2Fipfs%2F${upStream.hash}&arg=%2Fb3%2Fquotes%2F${upStream.filename}`,
+    url: `${api}/files/cp?arg=%2Fipfs%2F${upStream.hash}&arg=%2Fb3%2Fquotes%2F${upStream.filename}`,
   });
 }
 

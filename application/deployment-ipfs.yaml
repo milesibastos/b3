@@ -17,6 +17,8 @@ spec:
       containers:
       - image: milesibastos.azurecr.io/ipfs:latest
         name: ipfs
+        ports:
+        - containerPort: 5001
         volumeMounts:
         - name: ipfs-persistent-storage
           mountPath: /data/ipfs

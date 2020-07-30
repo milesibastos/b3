@@ -1,0 +1,16 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: b3-intraday-cronjob
+  namespace: b3
+spec:
+  schedule: "30 23 * * 1-5"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: b3-intraday-cronjob
+            image: milesibastos.azurecr.io/b3-cron:latest
+          restartPolicy: Never
+

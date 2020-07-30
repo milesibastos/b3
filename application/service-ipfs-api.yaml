@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ipfs-api
+  namespace: b3
+  labels:
+    k8s-app: ipfs
+  finalizers:
+    - service.kubernetes.io/load-balancer-cleanup
+spec:
+  ports:
+    - name: tcp-5001-5001-dl4v6
+      protocol: TCP
+      port: 5001
+      targetPort: 5001
+  selector:
+    k8s-app: ipfs
