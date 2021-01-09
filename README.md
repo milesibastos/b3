@@ -1,6 +1,7 @@
 # Market Data | B3
 
-- [Market Data \| B3](http://www.b3.com.br/en_us/market-data-and-indices/data-services/market-data/)
+- [Market Data | B3](http://www.b3.com.br/en_us/market-data-and-indices/data-services/market-data/)
+- [Historical Quotes](http://www.b3.com.br/en_us/market-data-and-indices/data-services/market-data/historical-data/equities/historical-quotes/)
 - [FILE LAYOUT – HISTORICAL QUOTATIONS](http://www.b3.com.br/data/files/65/50/AD/26/29C8B51095EE46B5790D8AA8/HistoricalQuotations_B3.pdf)
 
 ## Historical Quotations
@@ -43,6 +44,8 @@ $ curl https://b3-2020.now.sh/api/ticker/PETR4/2020-06-01
 [
   "012020060102PETR4       010PETROBRAS   PN      N2   R$  000000000201500000000020560000000002000000000000203500000000020330000000002033000000000203402047000000000086579500000000176231966700000000000000009999123100000010000000000000BRPETRACNPR6196"
 ]
+
+$ curl https://b3-2020.now.sh/api/ticker/PETR4/$(date +%F)
 ```
 
 ## Mapping text to object sample
