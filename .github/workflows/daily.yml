@@ -3,11 +3,11 @@ name: daily
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '59 23 * * 1-5'
+    - cron:  '0 9 * * 1-5'
 
 jobs:
   trigger:
     runs-on: ubuntu-latest
     steps:
-      - name: Update 2020
+      - name: Update 2021
         run: curl -X POST https://api.zeit.co/v1/integrations/deploy/Qmeae6mv4Ut6HN966EGS45ZwmC3A16RjkRdJFecRBHauDK/W1Gi54Ws8d
