@@ -9,7 +9,7 @@
     "now-build": "curl http://bvmf.bmfbovespa.com.br/InstDados/SerHist/COTAHIST_A${YEAR}.ZIP --output COTAHIST_A${YEAR}.ZIP --silent"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "date-fns": "^2.14.0",
     "form-data": "^3.0.0",
     "unzip-stream": "^0.3.0"
